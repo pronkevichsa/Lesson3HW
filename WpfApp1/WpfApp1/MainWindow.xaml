@@ -1,0 +1,31 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="605.475" Width="800">
+    <Grid Margin="0,0,0,26">
+        <Button Content="Вычислить" HorizontalAlignment="Left" Margin="616,94,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click"/>
+        <Label Name ="Label1" Content="Сумма" HorizontalAlignment="Left" Margin="44,32,0,0" VerticalAlignment="Top" Height="30" Width="86"/>
+        <Button Content="Вычислить" HorizontalAlignment="Left" Margin="168,134,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click_1"/>
+        <Label x:Name ="Label1_Copy" Content="Процентная ставка" HorizontalAlignment="Left" Margin="44,80,0,0" VerticalAlignment="Top" Height="30" Width="130"/>
+        <TextBox x:Name="TextBoxSumma"   HorizontalAlignment="Left" Height="22" Margin="168,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxPercent"   HorizontalAlignment="Left" Height="22" Margin="168,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <RichTextBox x:Name="richText"   HorizontalAlignment="Left" Height="334" Margin="44,182,0,0" VerticalAlignment="Top" Width="318">
+            <FlowDocument>
+                <Paragraph>
+
+                    <Run Text=""/>
+
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <TextBox x:Name="TextBoxRadius" HorizontalAlignment="Left" Height="23" Margin="616,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxArea" HorizontalAlignment="Left" Height="23" Margin="616,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name ="Label1_Copy1" Content="Радиус" HorizontalAlignment="Left" Margin="496,38,0,0" VerticalAlignment="Top" Height="30" Width="86"/>
+        <Label x:Name ="Label1_Copy2" Content="Площадь круга" HorizontalAlignment="Left" Margin="496,164,0,0" VerticalAlignment="Top" Height="30" Width="115"/>
+
+    </Grid>
+</Window>
