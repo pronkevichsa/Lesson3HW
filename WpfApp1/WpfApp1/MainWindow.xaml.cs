@@ -36,47 +36,37 @@ namespace WpfApp1
             else
                 MessageBox.Show("Введите правильно радиус");
         }
-
-        //private float CalculationSummaMonth(decimal summa, decimal percent)
-        //{
-        //    float summaMonth = 0;
-        //    decimal finalMonth = (summa * percent / 100 + summa) / 12;
-        //    int finalMonthInt=Convert.ToInt32( (summa * percent / 100 + summa) / 12*100);
-
-        //    return summaMonth;
-        //}
+        
+        private bool CheckValues(string strSumma, string strPercent, out decimal sum, out decimal per)
+        {            
+            bool checkSumma = Decimal.TryParse(TextBoxSumma.Text, out sum);          
+            bool checkPercent = Decimal.TryParse(TextBoxPercent.Text, out per);
+            return (checkSumma && checkPercent);
+        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            /// получаем данные и приобраовываем к числовому формату
-            decimal summa;
-            bool checkSumma =  Decimal.TryParse(TextBoxSumma.Text, out summa);          
-            decimal percent;
-            bool checkPercent = Decimal.TryParse(TextBoxPercent.Text, out percent);
-
-            if (checkSumma && checkPercent)
+        {            
+            decimal summa = 0;
+            decimal percent = 0;
+            bool check = CheckValues(TextBoxSumma.Text, TextBoxPercent.Text, out summa, out percent);
+            if (check)
             {
-                decimal finalMonth = (summa * percent / 100 + summa) / 12;
-                float finalMonthfloat = (float)Math.Round(Convert.ToDouble(finalMonth), 2);
-                ///
+                Class1 Calculation = new Class1(summa, percent);
+                decimal[] payment = new decimal[12];
+                payment = Calculation.MonthPaymentCalc();
                 FlowDocument mcFlowDoc = new FlowDocument();
                 Paragraph para = new Paragraph();
                 para.Inlines.Add("Выплаты по месяцам:\n");
                 mcFlowDoc.Blocks.Add(para);
                 string str = "";
-                string strMonth = String.Format("{0:C}", finalMonth);
-                for (int i = 1; i <= 11; i++)
+                for (int i = 1; i <= 12; i++)
                 {
-                    str += i.ToString() + " месяц " + strMonth + " руб.\n";
+                    str += i.ToString() + " месяц " + payment[i-1] + " руб.\n";
                 }
-                /// в последний меяц выплаты чуть больше из-за округлений в предыдущие месяцы
-                decimal lastMonth = (summa * percent / 100 + summa) - (decimal)finalMonthfloat * 11;
-                string strLastMonth = String.Format("{0:C}", lastMonth);
-                str += "12 месяц " + strLastMonth + " руб.\n";
                 str += "Общая сумма выплат составит:" + (summa * percent / 100 + summa).ToString() + " руб.";
                 para.Inlines.Add(str);
                 mcFlowDoc.Blocks.Add(para);
-                richText.Document = mcFlowDoc;
+                richText.Document = mcFlowDoc;             
             }
             else
             {
