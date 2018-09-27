@@ -11,10 +11,6 @@ namespace WpfApp1
         private decimal summa;
         private decimal percent;
         
-        // private decimal everyMonthPayment;
-        // private decimal totalSummaPayment;
-        // private float finalMonthfloat;
-
         public Class1()
         {
             summa = 100;
@@ -25,33 +21,9 @@ namespace WpfApp1
             summa = summaInput;
             percent = percentInput;
         }
-
-        public decimal Summa
-        {
-            get
-            {
-                return Summa;
-            }
-            set
-            {
-                summa = value;
-            }
-        }
-        public decimal Percent
-        {
-            get
-            {
-                return percent;
-            }
-            set
-            {
-                percent = value;
-            }
-        }
-
+       
         public decimal[] MonthPaymentCalc()
         {
-           // decimal totalSummaPayment = summa * percent / 100 + summa;
             decimal everyMonthPayment = (summa * percent / 100 + summa) / 12; 
             
             float everyMonthPaymentfloat = (float)Math.Round(Convert.ToDouble(everyMonthPayment), 2);
